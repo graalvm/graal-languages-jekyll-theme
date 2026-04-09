@@ -1,0 +1,38 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content='{{ "/assets/img/graalvm.png" | relative_url }}' />
+  
+  <title>{{site.name}}
+    {%- if page.title %} - {{ page.title | escape }}{% endif -%}
+  </title>
+  
+  {%- if page.excerpt or site.description -%}
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"/>
+  {%- endif -%}
+
+  {%- if page.canonical_url or page.url -%}
+  <link rel="canonical" href="{{ page.canonical_url | default: page.url | replace: 'index.html', '' }}">
+  {%- endif -%}
+
+  <link rel="apple-touch-icon" sizes="180x180" href='{{ "/assets/img/favicons/apple-touch-icon.png" | relative_url }}'>
+  <link rel="icon" type="image/png" sizes="32x32" href='{{ "/assets/img/favicons/favicon-32x32.png" | relative_url }}'>
+  <link rel="icon" type="image/png" sizes="16x16" href='{{ "/assets/img/favicons/favicon-16x16.png" | relative_url }}'>
+
+  <link rel="stylesheet" href="{{ '/assets/lib/bootstrap/css/bootstrap.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/highlight.css' | relative_url }}">
+  {%- if page.css -%}
+  <link rel="stylesheet" href="{{ page.css | relative_url }}">
+  {% endif %}
+
+  <script src='{{ "/assets/lib/jquery/jquery-3.7.1.min.js" | relative_url }}'></script>
+
+  <script src='{{ "/assets/lib/bootstrap/js/bootstrap.min.js" | relative_url }}'></script>
+
+  <script src='{{ "/assets/lib/sticky-sidebar/resizeSensor.js" | relative_url }}'></script>
+  <script src='{{ "/assets/lib/sticky-sidebar/sticky-sidebar.min.js" | relative_url }}'></script>
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>

@@ -1,0 +1,63 @@
+---
+layout: base
+---
+
+<article id="docs-page">
+  <div class="row">
+    <div class="col-sm-3 docsimpro col-bg">
+      <div class="sidebar-wrap">
+        <div class="sidebar sidestyle">
+          <div class="toc-container">
+            <ul class="toc">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 docsmod">
+      <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+        <div class="docs-content__inner">
+          {{ content }}
+        </div>
+      </div>
+      <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+        <div class="hamburger">
+          <div class="inner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var tocContainer = document.querySelector('.toc');
+      var contentWrapper = document.querySelector('#content-wrapper');
+
+      if (tocContainer && contentWrapper) {
+          var headings = contentWrapper.querySelectorAll('h1, h2, h3');
+
+          if (headings.length > 0) {
+              var ul = document.createElement('ul');
+
+              headings.forEach(function (heading) {
+                  var li = document.createElement('li');
+                  var a = document.createElement('a');
+                  a.href = '#' + heading.id;
+                  a.textContent = heading.textContent;
+
+                  li.classList.add(heading.tagName.toLowerCase());
+
+                  li.style.listStyleType = 'none';
+
+                  li.appendChild(a);
+                  ul.appendChild(li);
+              });
+
+              tocContainer.appendChild(ul);
+          } else {
+              tocContainer.innerHTML = '<p>No table of contents available.</p>';
+          }
+      }
+  });
+</script>

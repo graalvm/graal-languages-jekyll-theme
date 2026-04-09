@@ -1,0 +1,37 @@
+<footer class="footer footer__mobile">
+  <div class="container">
+    <div class="row footer-content">
+      <div class="footer__logo">
+        <div class="rubber-footer">
+          <img src='{{ "/assets/logo.svg" | relative_url }}' alt="project logo">
+        </div>
+      </div>
+      <div class="footer__columns">
+        <div class="footer__columns-item">
+          <h6 class="title-footer">Open Source</h6>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github | default: oracle/graal }}{% if site.github_subdir %}/tree/master{{ site.github_subdir }}{% endif %}">Project Repository</a></li>
+            <li class="footer-list__item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/graalvm/graal-languages-demos/">Demos and Guides</a></li>
+            <li class="footer-list__item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github | default: oracle/graal }}/blob/master/CONTRIBUTING.md">Contributing</a></li>
+          </ul>
+        </div>
+        <div class="footer__columns-item">
+          <h6 class="title-footer">Help</h6>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github | default: oracle/graal }}/issues">File an issue</a></li>
+            <li class="footer-list__item"><a target="_blank" rel="noopener noreferrer" href="https://www.graalvm.org/slack-invitation/">GraalVM Slack</a></li>
+            <li class="footer-list__item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github | default: oracle/graal }}{{ site.license_path | default: /blob/master/LICENSE.txt }}">License</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="copyright">
+            Copyright © {{ site.time | date: '%Y' }}. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,101 @@
+{%- assign current_audience_name = nil -%}
+{%- if site.audiences -%}
+  {%- for audience in site.audiences -%}
+    {%- if audience.identifier == page.audience_identifier -%}
+      {%- assign current_audience_name = audience.name -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if page.url == '/' -%}
+    {%- assign show_menu_items = false -%}
+  {%- else -%}
+    {%- assign show_menu_items = true -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign show_menu_items = true -%}
+{%- endif -%}
+<header class="site-header site--header">
+  <div class="container">
+  <div class="wrapper">
+    <a class="menu__logo" href="{{ "/" | relative_url }}">
+      <img src='{{ "/assets/logo.svg" | relative_url }}' alt="Logo">
+    </a>
+    {% if current_audience_name %}
+    <a href='{{ "/" | append: page.audience_identifier | append: "-developers/" | relative_url }}' class="header-context-link">
+      <img class="header-context-icon" alt="code icon" src="{{ '/assets/img/header-navigation/code-icon.svg' | relative_url }}">
+      <p>for {{ current_audience_name }} Developers</p>
+    </a>
+    {% endif %}
+    <nav class="site-nav">
+      <ul class="menu__list">
+        {%- if show_menu_items -%}
+        {%- assign sorted_pages = site.pages | sort: "name" -%}
+        {%- for p in sorted_pages -%}
+        {%- if p.title and (site.audiences == nil or p.audience_identifier == page.audience_identifier) -%}
+        <li class="menu__item">
+          <a href='{{ p.canonical_url | default: p.url | relative_url }}' class="menu__link">{{ p.title }}</a>
+        </li>
+        {%- endif -%}
+        {%- endfor -%}
+        {%- endif -%}
+        <li class="menu__item">
+          <div class="stack-container">
+            <a href="#" class="menu__link stack__header">Graal Projects</a>
+            <div class="stack-menu">
+              <div class="stack-row">
+                <div class="stack-column">
+                  <div class="stack__item">
+                    <img alt="GraalVM icon" src="{{ '/assets/img/header-navigation/graalvm.svg' | relative_url }}">
+                    <a href="https://graalvm.org/" class="item-line">GraalVM</a>
+                  </div>
+                  <div class="stack__item">
+                    <img alt="Graal Stack icon" src="{{ '/assets/img/header-navigation/graalstack.svg' | relative_url }}">
+                    <a href="https://graal.cloud/" class="item-line">Graal Stack</a>
+                  </div>
+                  <div class="stack__item">
+                    <img alt="Graal Dev Kit for Micronaut icon" src="{{ '/assets/img/header-navigation/gdk.svg' | relative_url }}">
+                    <a href="https://graal.cloud/gdk/" class="item-line">Graal Dev Kit for Micronaut</a>
+                  </div>
+                  <div class="stack__item">
+                    <img alt="GraalOS icon" src="{{ '/assets/img/header-navigation/graalos.svg' | relative_url }}">
+                    <a href="https://graal.cloud/graalos/" class="item-line">GraalOS</a>
+                  </div>
+                </div>
+                <div class="stack-column">
+                  <div class="stack__item">
+                    <img alt="JavaScript icon" src="{{ '/assets/img/header-navigation/js-navi.svg' | relative_url }}">
+                    <a href="https://graalvm.org/javascript/" class="item-line">GraalJS</a>
+                  </div>
+                  <div class="stack__item">
+                    <img alt="Python icon" src="{{ '/assets/img/header-navigation/python-navi.svg' | relative_url }}">
+                    <a href="https://graalvm.org/python/" class="item-line">GraalPy</a>
+                  </div>
+                  <div class="stack__item">
+                    <img alt="WebAssembly icon" src="{{ '/assets/img/header-navigation/wasm-navi.svg' | relative_url }}">
+                    <a href="https://graalvm.org/webassembly/" class="item-line">GraalWasm</a>
+                  </div>
+                  <div class="stack__item">
+                    <img alt="Java icon" src="{{ '/assets/img/header-navigation/java-navi.svg' | relative_url }}">
+                    <a href='{{ "https://graalvm.org/reference-manual/java-on-truffle/" | relative_url }}' class="item-line">Espresso</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div class="menu__item icons githubstar" tabindex="0">
+          <span class="github-widget">
+            <a tabindex="-1" class="github-button" href="https://github.com/{{ site.github | default: oracle/graal }}" data-icon="octicon-star"
+              data-show-count="true" aria-label="Star {{ site.github | default: oracle/graal }} on GitHub">Star</a>
+          </span>
+        </div>
+      </ul>
+      <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
+        <div class="hamburger">
+          <div class="inner"></div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  </div>
+</header>
