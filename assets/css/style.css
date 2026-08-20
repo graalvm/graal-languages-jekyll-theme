@@ -2656,6 +2656,16 @@ h5.compatibility-text svg:hover
   margin: 20px;
 }
 
+.compatibility__chart-visualization
+{
+  background: var(--compatibility-chart, #0d3b4c);
+}
+
+.compatibility__chart-visualization .slice
+{
+  display: none;
+}
+
 .slice
 {
   position: absolute;
@@ -2719,29 +2729,39 @@ h5.compatibility-text svg:hover
   content: "";
   width: 15px;
   height: 15px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 5px;
   border-radius: 50%;
+  color: #0d3b4c;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .legend-item-1::before
 {
   background-color: #13a97c;
+  content: "✓";
 }
 
 .legend-item-2::before
 {
   background-color: #76d1ff;
+  content: "?";
 }
 
 .legend-item-3::before
 {
   background-color: #c84d4d;
+  content: "✕";
 }
 
 .legend-item-4::before
 {
   background-color: #d7d7d7;
+  content: "–";
 }
 
 .info-tooltip
@@ -2823,6 +2843,7 @@ input::-webkit-input-placeholder
 .package__btn {
   display: flex;
   flex-direction: row;
+  gap: 12px;
   justify-content: flex-end;
   width: 40%;
   margin-left: 20px;
@@ -2831,6 +2852,26 @@ input::-webkit-input-placeholder
 .package__btn input[type=file]
 {
   display: none;
+}
+
+.compatibility__file-button
+{
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid #8ec9e6;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.compatibility__file-button:hover,
+.compatibility__file-button:focus-within
+{
+  background: rgba(142, 201, 230, .16);
+  color: #fff;
 }
 
 @media only screen and (min-width:320px) and (max-width:991px)
