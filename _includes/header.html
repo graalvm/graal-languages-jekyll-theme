@@ -31,7 +31,7 @@
         {%- if show_menu_items -%}
         {%- assign sorted_pages = site.pages | sort: "name" -%}
         {%- for p in sorted_pages -%}
-        {%- if p.title and (site.audiences == nil or p.audience_identifier == page.audience_identifier) -%}
+        {%- if p.title and p.nav_exclude != true and (site.audiences == nil or p.audience_identifier == page.audience_identifier) -%}
         <li class="menu__item">
           <a href='{{ p.canonical_url | default: p.url | relative_url }}' class="menu__link">{{ p.title }}</a>
         </li>
