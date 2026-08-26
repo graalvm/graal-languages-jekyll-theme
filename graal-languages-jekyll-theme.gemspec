@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "graal-languages-jekyll-theme"
-  spec.version       = "0.2.0"
+  spec.version       = "0.2.1"
   spec.authors       = ["GraalVM Development"]
   spec.email         = ["graalvm-dev@oss.oracle.com"]
 
